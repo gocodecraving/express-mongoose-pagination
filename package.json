@@ -1,0 +1,25 @@
+{
+  "name": "mongoose-laravel-pagination",
+  "version": "1.0.0",
+  "description": "A light weight package used along with mongoose to query collections almost similar to Laravel pagination. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js -e js"
+  },
+  "keywords": [
+    "laravel",
+    "pagination",
+    "paginate",
+    "laravel-paginate",
+    "laravel-pagination",
+    "mongoose-pagination",
+    "mongoose-laravel-pagination",
+    "mongodb-pagination"
+  ],
+  "author": "Rahul Arora",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
+  }
+}
