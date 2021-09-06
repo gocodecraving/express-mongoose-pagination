@@ -83,7 +83,7 @@ app.get('/users', async function(req, res){
 
    //1. Use the find query method normally without any restrictions. You can pass all available parameters like condition, projection, options, etc
 
-   const users = await User.find().paginate(req, { withQueryParams: true })
+   const users = await User.find().paginate(req, { withQueryString: true })
 
    res.render('views/users.html', { users }) //render and pass users
 
