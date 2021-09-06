@@ -1,52 +1,74 @@
-const mongoose = require('mongoose')
-const express = require('express')
-const app = express()
-const laravelMongoosePagination = require('./laravel-mongoose-pagination')
+module.exports = schema => {
+    schema.query.paginate = async function (req, options = { withQueryString: false }) {
+        let firstPageUrl = lastPageUrl = null
+        let params = { ...req.query }
+        const page = isNumeric(params?.page) ? params?.page : 1
+        const perPage = isNumeric(params?.perPage) ? params?.perPage : 15
+        !options.withQueryString && (params = { page, perPage })
+        const queryString = new URLSearchParams(params)
+        const path = setUrl(withQueryString = false)
 
-mongoose.connect(`mongodb://127.0.0.1:27017/laravel_mongoose_pagination`)
+        const total = await this.model.countDocuments(this.getQuery())
+        const totalPages = Math.ceil(total / perPage)
 
-const userSchema = new mongoose.Schema({
-    sortIndex: Number,
-    name: String,
-    username: String,
-    email: String,
-    mobile: String,
-    status: {
-        type: String,
-        enum: ['Active', 'Inactive'],
-        default: 'Active'
-    },
-    createdAt: {
-        type: Date,
-        default: new Date
+        const pages = Array(totalPages).fill().map((_, index) => {
+
+            const page = index + 1
+            let nextPageUrl = prevPageUrl = null
+
+            if (page + 1 <= totalPages) {
+                queryString.set('page', page + 1)
+                nextPageUrl = setUrl()
+            }
+
+            if (index > 0) {
+                queryString.set('page', page - 1)
+                prevPageUrl = setUrl()
+            }
+
+            return { page, nextPageUrl, prevPageUrl }
+        })
+
+        if (pages?.[0]) {
+            queryString.set('page', pages?.[0]?.page)
+            firstPageUrl = setUrl()
+        }
+
+        if (pages?.[pages?.length - 1]) {
+            queryString.set('page', pages?.[pages?.length - 1]?.page)
+            lastPageUrl = setUrl()
+        }
+
+
+        const data = await this.model.find(this.getQuery(), this.projection() ?? { _: 0 })
+            .sort(this.options?.sort ?? {})
+            .skip((perPage ? +perPage : 15) * ((page ?? 1) - 1))
+            .limit(perPage ? +perPage : 15)
+
+        const pager = pages?.find(p => p.page == page)
+        const from = data?.length ? (page > 1 ? (perPage * (page - 1)) + 1 : 1) : 0;
+
+        return {
+            currentPage: +page,
+            data,
+            firstPageUrl,
+            lastPageUrl,
+            from,
+            to: (from - 1) + data?.length,
+            lastPage: totalPages,
+            nextPageUrl: pager?.nextPageUrl ?? null,
+            prevPageUrl: pager?.prevPageUrl ?? null,
+            path,
+            perPage: +perPage,
+            total
+        }
+
+        function setUrl(withQueryString = true) {
+            return `${req.protocol}://${req.get('host') + req.path}${withQueryString ? `?${queryString.toString()}` : ''}`
+        }
+        function isNumeric(v) {
+            return Boolean(v) && !isNaN(v)
+        }
     }
-})
 
-userSchema.plugin(laravelMongoosePagination)
-
-const User = mongoose.model('users', userSchema)
-
-User.deleteMany({}).exec()
-
-const users = []
-
-for (const [index, _] of Array(50).fill().entries()) {
-    users.push({
-        sortIndex: index + 1,
-        name: `User ${index + 1}`,
-        username: `myusername_${index + 1}`,
-        email: `test-user-${index + 1}@test.com`,
-        mobile: `98${Math.floor(Math.random() * 100000000)}`
-    })
 }
-
-User.insertMany(users)
-
-app.get('/users', async (req, res) => {
-    const users = await User.find()
-        .sort({ sortIndex: -1 })
-        .paginate(req);
-    res.json(users)
-})
-
-app.listen(3000)

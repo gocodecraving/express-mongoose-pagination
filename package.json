@@ -1,19 +1,21 @@
 {
-  "name": "mongoose-laravel-pagination",
+  "name": "express-mongoose-pagination",
   "version": "1.0.0",
-  "description": "A light weight package used along with mongoose to query collections almost similar to Laravel pagination. ",
+  "description": "A light weight package used along with mongoose to query collections almost similar to Laravel pagination.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js -e js"
+    "test": "nodemon app.js -e js"
   },
   "keywords": [
+    "express",
+    "mongoose-plugins",
     "laravel",
     "pagination",
     "paginate",
     "laravel-paginate",
     "laravel-pagination",
     "mongoose-pagination",
-    "mongoose-laravel-pagination",
+    "express-mongoose-pagination",
     "mongodb-pagination"
   ],
   "author": "Rahul Arora",
