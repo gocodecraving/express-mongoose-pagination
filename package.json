@@ -1,6 +1,6 @@
 {
   "name": "express-mongoose-pagination",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A light weight package used along with mongoose to query collections almost similar to Laravel pagination.",
   "main": "index.js",
   "scripts": {
