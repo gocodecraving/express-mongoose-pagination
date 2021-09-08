@@ -1,9 +1,9 @@
-#### Introduction
+## Introduction
 ---
 
 Hello Folks,
 
-Pagination of data is highly recommended if you want to fetch large number of records from the colection. For eg: *All users from Users collection.* If you fetch the records without pagination, it may result in slow performance at both back-end and front-end side.
+Pagination of data is highly recommended if you want to fetch large number of records from the collection. For eg: *All users from Users collection.* If you fetch the records without pagination, it may result in slow performance at both back-end and front-end side.
 
 So, this tool will help you to paginate your data without impacting the performance.
 
@@ -14,14 +14,13 @@ You just need to pass the **request** object, and some optional parameters to th
 I have explained it's implementation below:
 <br/>
 
-#### Dependency Requirements
+## Dependency Requirements
 ---
-1. Express.js
-2. Mongoose ODM
+No Dependencies!
 
 <br/>
 
-#### Installation
+## Installation
 ---
 
 *Install with the following command*
@@ -32,7 +31,7 @@ I have explained it's implementation below:
 
 <br/>
 
-#### Implementation
+## Implementation
 ---
 
 **1. Import the module in model**
@@ -97,7 +96,7 @@ app.get('/users', async function(req, res){
 
 <br/>
 
-#### Data Object and Query Parameters
+## Data Object and Query Parameters
 ---
 
 You will get the output data in the form of object as mentioned below:
