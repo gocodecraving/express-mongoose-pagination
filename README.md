@@ -12,11 +12,6 @@ You need to use this tool with **find()** query method of **mongoose** ODM to ma
 You just need to pass the **request** object, and some optional parameters to the **paginate()** method of this tool, it will return an object with useful information that you can use to handle you data with ease.
 
 I have explained it's implementation below:
-<br/>
-
-## Dependency Requirements
----
-No Dependencies!
 
 <br/>
 
