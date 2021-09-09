@@ -192,6 +192,22 @@ const users = await User.find({ sortIndex: {$gt: 10 } })
 }                
 ```
 
-Let me know if you face any problem or bug, I will fix it ASAP.
+## License
+---
 
-Thank You
+[MIT](#https://github.com/codecravegit/express-mongoose-pagination/blob/master/LICENSE.txt)
+
+<br/>
+
+## Show your Support
+---
+
+If you like my work, please support and share it to your fellow people.
+
+   * [Star this repository](#https://github.com/codecravegit/express-mongoose-pagination)
+   * Share
+   * Feel free to fork and experiment, if found any bug or have any suggestion, do let me know.
+
+<br/>
+
+   Thank you and have a great time ahead!

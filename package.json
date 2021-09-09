@@ -18,7 +18,12 @@
     "express-mongoose-pagination",
     "mongodb-pagination"
   ],
-  "author": "Rahul Arora",
-  "license": "ISC",
+  "author": "Rahul Arora <rahul@codecraving.com>",
+  "homepage": "https://github.com/codecravegit/express-mongoose-pagination.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codecravegit/express-mongoose-pagination.git"
+  },
+  "license": "MIT",
   "dependencies": {}
 }
