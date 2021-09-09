@@ -195,7 +195,7 @@ const users = await User.find({ sortIndex: {$gt: 10 } })
 ## License
 ---
 
-[MIT](#https://github.com/codecravegit/express-mongoose-pagination/blob/master/LICENSE.txt)
+[MIT](https://github.com/codecravegit/express-mongoose-pagination/blob/master/LICENSE.txt)
 
 <br/>
 
@@ -204,7 +204,7 @@ const users = await User.find({ sortIndex: {$gt: 10 } })
 
 If you like my work, please support and share it to your fellow people.
 
-   * [Star this repository](#https://github.com/codecravegit/express-mongoose-pagination)
+   * [Star this repository](https://github.com/codecravegit/express-mongoose-pagination)
    * Share
    * Feel free to fork and experiment, if found any bug or have any suggestion, do let me know.
 
