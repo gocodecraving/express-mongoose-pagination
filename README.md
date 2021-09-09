@@ -205,7 +205,7 @@ const users = await User.find({ sortIndex: {$gt: 10 } })
 If you like my work, please support and share it to your fellow people.
 
    * [Star this repository](https://github.com/codecravegit/express-mongoose-pagination)
-   * Share
+   * [Share my work](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/codecravegit/express-mongoose-pagination)
    * Feel free to fork and experiment, if found any bug or have any suggestion, do let me know.
 
 <br/>
