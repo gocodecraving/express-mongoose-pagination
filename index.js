@@ -64,7 +64,7 @@ module.exports = schema => {
         }
 
         function setUrl(withQueryString = true) {
-            return `${req.protocol}://${req.get('host') + req.path}${withQueryString ? `?${queryString.toString()}` : ''}`
+            return `${req.protocol}://${req.get('host') + req?._parsedOriginalUrl?.pathname}${withQueryString ? `?${queryString.toString()}` : ''}`
         }
         function isNumeric(v) {
             return Boolean(v) && !isNaN(v)
