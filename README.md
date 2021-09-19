@@ -115,8 +115,6 @@ You will get the output data in the form of object as mentioned below:
    ] // Array of data objects,
    firstPageUrl: 'https://xyz.com/users?page=1',
    lastPageUrl: 'https://xyz.com/users?page=4',
-   from: 1 //paginate serial no from,
-   to: 15 //paginate serial no to,
    lastPage: 4 // Last page number,
    nextPageUrl: 'https://xyz.com/users?page=2',
    prevPageUrl: null,
@@ -178,6 +176,44 @@ const users = await User.find({ sortIndex: {$gt: 10 } })
 {
    currentPage:1,
    .
+   .
+   firstPageUrl: 'https://xyz.com/users?page=1&perPage=10&foo=bar&john=doe',
+   lastPageUrl: 'https://xyz.com/users?page=4&perPage=10&foo=bar&john=doe',
+   .
+   .
+
+}                
+```
+
+<br/>
+
+**Serial Numbers:**
+
+You can pass `_sno` as boolean to options parameters object to paginate function to get data with serial numbers.
+
+```js
+//pass _sno option like this
+
+const users = await User.find({ sortIndex: {$gt: 10 } })
+                .sort({ sortIndex: 1 })
+                .paginate(request, { withQueryString:true, _sno:true })
+
+// Output will be like this
+{
+   currentPage:1,
+   data:[
+      {
+         ...
+         ...
+         _sno: 1
+      },
+      {
+         ...
+         ...
+         _sno: 2
+      }
+      ....
+   ]
    .
    firstPageUrl: 'https://xyz.com/users?page=1&perPage=10&foo=bar&john=doe',
    lastPageUrl: 'https://xyz.com/users?page=4&perPage=10&foo=bar&john=doe',

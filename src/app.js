@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
-const pagination = require('./index')
+const pagination = require('./index').default
 
 mongoose.connect(`mongodb://127.0.0.1:27017,127.0.0.1:27018,127.0.0.1:27019/mongoose_laravel_pagination?replicaSet=rs`, { keepAlive: 1 })
 
@@ -41,7 +41,7 @@ User.deleteMany({}).then(() => {
         app.get('/users', async (req, res) => {
             const users = await User.find({ sortIndex: { $gt: 10 } })
                 .sort({ sortIndex: 1 })
-                .paginate(req);
+                .paginate(req, { _sno: true });
             res.json(users)
         })
     })
