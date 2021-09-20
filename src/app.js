@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
-const pagination = require('./index').default
+const pagination = require('./index')
 
 mongoose.connect(`mongodb://127.0.0.1:27017,127.0.0.1:27018,127.0.0.1:27019/mongoose_laravel_pagination?replicaSet=rs`, { keepAlive: 1 })
 

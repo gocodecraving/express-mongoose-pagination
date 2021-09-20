@@ -2,7 +2,7 @@ import { Schema } from "mongoose"
 import { StringNull, Request, IPaginateObject, IPages, IOptions } from "./types"
 import { toNumeric, setUrl } from "./utils"
 
-export default function (schema: Schema): void {
+module.exports = function (schema: Schema): void {
 
     schema.query.paginate = async function (req: Request, options: IOptions): Promise<IPaginateObject> {
         let firstPageUrl: StringNull = null

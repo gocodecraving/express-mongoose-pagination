@@ -1,3 +1,2 @@
-import { Schema } from "mongoose";
-export default function (schema: Schema): void;
+export {};
 //# sourceMappingURL=index.d.ts.map

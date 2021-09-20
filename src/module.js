@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("./utils");
-module.exports = function (schema) {
+function pagination(schema) {
     schema.query.paginate = function (req, options) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j;
         return __awaiter(this, void 0, void 0, function () {
@@ -122,5 +122,6 @@ module.exports = function (schema) {
             });
         });
     };
-};
-//# sourceMappingURL=index.js.map
+}
+exports.default = pagination;
+//# sourceMappingURL=module.js.map
