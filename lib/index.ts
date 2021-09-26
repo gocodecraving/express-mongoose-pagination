@@ -12,7 +12,7 @@ module.exports = function (schema: Schema): void {
         const perPage: number = toNumeric(params?.perPage) ? +params?.perPage : 15
         !options?.withQueryString && (params = { page, perPage })
         const queryString: URLSearchParams = new URLSearchParams(params)
-        const total: number = await this.model.countDocuments(this.getQuery())
+        const total: number = await this.model.find(this.getQuery()).count()
         const totalPages: number = Math.ceil(total / perPage)
         const pages: Array<IPages> = Array(totalPages).fill(1).map((_, index): IPages => {
             const page: number = index + 1
@@ -50,7 +50,6 @@ module.exports = function (schema: Schema): void {
 
         if (options?._sno) {
             let _sno: number = data?.length ? (page > 1 ? (perPage * (page - 1)) + 1 : 1) : 0
-            // const to: number = (from - 1) + data?.length
             for (let i = 0; i < data.length; i++) {
                 data[i] = { ...data[i].toObject(), _sno }
                 _sno++
