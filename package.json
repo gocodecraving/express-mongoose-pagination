@@ -25,7 +25,8 @@
     "url": "https://github.com/codecravegit/express-mongoose-pagination.git"
   },
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@types/express": "^4.17.13",
     "express": "^4.17.1",
     "mongoose": "^6.0.5",
